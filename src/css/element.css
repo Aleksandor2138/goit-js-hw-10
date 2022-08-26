@@ -1,0 +1,32 @@
+html{
+    background: rgb(0,87,184, 0.9);
+    background: linear-gradient(180deg, rgba(0, 86, 184, 0.9) 25%, rgba(255,216,0, 0.9) 100%) no-repeat;
+    min-height: 100%;
+}
+body {
+    background: none;
+    padding: 20px 50px;
+}
+#search-box{
+    background: rgb(196, 216, 240);
+    border-radius: 5px;
+}
+
+.country-list{
+    list-style: none;
+}
+.country-list li{
+    display: flex;
+    align-items: center;
+}
+.country-list img{
+    width: 90px;
+    height: 60px;
+    margin-right: 20px;
+}
+.country-list h2{
+    font-size: 30px;
+}
+.country-info p{
+    font-size: 20px;
+}

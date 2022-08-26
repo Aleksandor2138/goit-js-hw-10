@@ -1,4 +1,5 @@
 import './css/styles.css';
+import './css/element.css';
 
 import Notiflix from 'notiflix';
 var debounce = require('lodash.debounce');
@@ -28,22 +29,23 @@ const countrieName = () => {
 
 //  Ответ если такая страна/страны существует
 const answerThen = (data) => {
-    if (data.length > 10) {
-        //  Больше десяти стран в ответе, выводим предупреждение
-        clearElement(constHtml.countryInfo);
-        clearElement(constHtml.countryList);
-        Notiflix.info.failure('Too many matches found. Please enter a more specific name.');
-        return;
-    } else if (data.length === 1) {
+    console.log(data);
+    if (data.length === 1) {
         //  вывод подробной информации об одной стране
         clearElement(constHtml.countryInfo);
         clearElement(constHtml.countryList);
         constHtml.countryInfo.insertAdjacentHTML('afterbegin', infoCountry(data));
-    } else {
+    } else if (data.length<10) {
         //  Вывод краткой информация о всех странах
         clearElement(constHtml.countryInfo);
         clearElement(constHtml.countryList);
         constHtml.countryList.insertAdjacentHTML('afterbegin', creatCountries(data));
+    } else {
+        //  Больше десяти стран в ответе, выводим предупреждение
+        clearElement(constHtml.countryInfo);
+        clearElement(constHtml.countryList);
+        Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+        return;
     }
 };
 //  Ответ если такой страны несуществует или неправильно набранно название
